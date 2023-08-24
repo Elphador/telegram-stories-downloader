@@ -1,0 +1,55 @@
+from config import *
+from pyrogram import Client ,filters , enums
+from pyroaddon import listen
+from pyrogram.errors import *
+from telethon.sync import TelegramClient
+from telethon.sessions import StringSession
+from telethon import functions, types
+import os
+#os.mkdir("downloads")
+bot = Client (  "cht",
+                api_id = API_ID,
+                api_hash = API_HASH ,
+                bot_token = BOT_TOKEN 
+                )
+
+
+
+                
+@bot.on_message(filters.private & filters.command(['start']))
+async def start(_, m):
+    await m.delete()
+    usr_name = m.from_user.first_name
+    await m.reply(f"**😊hello {usr_name} i am simple telegram stories downloader made by @neuralp\n\n\n1 i can download every protected stories😍 \n2 i can download private stories which is visible only for contacts🤩 \n3 the fun part you can view anyones story without being added or watched in viewers list ,which telegram called it stealth mode😅\n4 the last thing you can use all premium features of story via me🤗\n\nHow to use\n first send me the username of the stories owner , second send me telethon string session to access your account ,you can generate one from @strin9genbot   **")
+
+    
+    
+@bot.on_message(filters.private & filters.text)
+async def storyget(c,m): 
+    await m.reply_chat_action(enums.ChatAction.TYPING)
+    try :
+        await c.get_chat_member(-1001776406696,m.from_user.id)
+    except UserNotParticipant:
+        await m.reply('**as this Bot provides free service for users you have to join the bot channel \n@neuralp**')
+        return
+    session = await bot.ask(m.from_user.id ,"**please send your telethon session string , if you do not have any use @strin9genbot to generate one  **" )
+    try :
+        async with TelegramClient(StringSession(session.text), API_ID, API_HASH) as client:
+          result =await  client(functions.stories.GetPinnedStoriesRequest(
+            user_id= m.text.replace('@',''),
+            offset_id =42,
+            limit=100  ))
+          for story in result.stories:
+            download = await client.download_media(story.media)
+            await m.reply_document(download)
+            os.remove(download)
+    except Exception as e :
+        await m.reply(f'this happened??\n{e}\nplease report @neuralp 🙃')
+    await m.reply('Done')
+        
+        
+
+         
+                
+print('everything is fine ')
+bot.run()
