@@ -1,7 +1,7 @@
 # telegram-stories-downloader
 
 
-a simple telegram stories downloader made by @elphad0r
+a simple telegram stories downloader made by https://t.me/elphad0r
 
 
 1 it download every protected stories😍 
