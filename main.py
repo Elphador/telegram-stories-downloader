@@ -20,7 +20,7 @@ bot = Client (  "cht",
 async def start(_, m):
     await m.delete()
     usr_name = m.from_user.first_name
-    await m.reply(f"**😊hello {usr_name} i am simple telegram stories downloader made by @neuralp\n\n\n1 i can download every protected stories😍 \n2 i can download private stories which is visible only for contacts🤩 \n3 the fun part you can view anyones story without being added or watched in viewers list ,which telegram called it stealth mode😅\n4 the last thing you can use all premium features of story via me🤗\n\nHow to use\n first send me the username of the stories owner , second send me telethon string session to access your account ,you can generate one from @strin9genbot \n\nan open source project https://t.me/Neuralp/247**",disable_web_page_preview=True)
+    await m.reply(f"**😊hello {usr_name} i am simple telegram stories downloader made by @neuralp\n\n\n1 i can download every protected stories😍 \n2 i can download private stories which is visible only for contacts🤩 \n3 the fun part you can view anyones story without being added or watched in viewers list ,which telegram called it stealth mode😅\n4 the last thing you can use all premium features of story via me🤗\n\nHow to use\n first send me the username of the stories owner , second send me telethon string session to access your account ,you can generate one from @strin9genbot \n\nan open source project https://t.me/Neuralp/248**",disable_web_page_preview=True)
 
     
 @bot.on_message(filters.private & filters.text)
