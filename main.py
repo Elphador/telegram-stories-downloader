@@ -7,7 +7,7 @@ from telethon.sessions import StringSession
 from telethon import functions, types
 import os
 #os.mkdir("downloads")
-bot = Client (  "cht",
+bot = Client (  "story donwloader",
                 api_id = API_ID,
                 api_hash = API_HASH ,
                 bot_token = BOT_TOKEN 
@@ -31,9 +31,8 @@ async def storyget(c,m):
     except UserNotParticipant:
         await m.reply('**as this Bot provides free service for users you have to join the bot channel \n@neuralp**')
         return
-    session = await bot.ask(m.from_user.id ,"**please send your telethon session string , if you do not have any use @strin9genbot to generate one  **" )
     try :
-        async with TelegramClient(StringSession(session.text, API_ID, API_HASH) as client:
+        async with TelegramClient(StringSession(SESSION_STRING, API_ID, API_HASH) as client:
           result =await  client(functions.stories.GetPinnedStoriesRequest(
             user_id= m.text.replace('@',''),
             offset_id =42,
@@ -41,7 +40,6 @@ async def storyget(c,m):
           for story in result.stories:
             download = await client.download_media(story.media)
             await m.reply_document(download)
-            os.remove(download)
     except Exception as e :
         await m.reply(f'this happened??\n{e}\nplease report @neuralp 🙃')
     await m.reply('Done')
