@@ -1,6 +1,6 @@
 
-BOT_TOKEN = '6475186974:AAGHF3IkpKY9DTPx8vaxm-Tck9Lj0oB0Y8s'
-API_ID = 9583161
-API_HASH = "aecf9e2b7c655c4f916564ab6d598a73"
-OWNER_ID =2069970688
+BOT_TOKEN = pass your bot token from @botfather
+API_ID = pass your API ID from my.telegram.org
+API_HASH = pass your API HASH from my.telegram.org
+SESSION_STRING pass your account telethon session string use @strin9genbot or elsewhere 
     
