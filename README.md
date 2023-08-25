@@ -19,3 +19,7 @@ Running example bot https://t.me/atstorybot
 
 
 you can generate string session  from https://t.me/strin9genbot which is open source https://github.com/Elphador/telethon-and-pyrogram-string-sessions-generator-bot
+
+
+
+pass your own Values on config file and host it elsewhere
