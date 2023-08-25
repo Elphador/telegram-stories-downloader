@@ -31,9 +31,9 @@ async def storyget(c,m):
     except UserNotParticipant:
         await m.reply('**as this Bot provides free service for users you have to join the bot channel \n@neuralp**')
         return
-    session = await bot.ask(m.from_user.id ,"**please send your telethon session string , if you do not have any use @strin9genbot to generate one  **" )
+    #session = await bot.ask(m.from_user.id ,"**please send your telethon session string , if you do not have any use @strin9genbot to generate one  **" )
     try :
-        async with TelegramClient(StringSession(session.text), API_ID, API_HASH) as client:
+        async with TelegramClient(StringSession("1BJWap1wBu3UtUKbZUUdxGsid2z35OBjATonOzsLwaswaCLK9JsUabEg60Y8VAwZLsf76hlc9-4ItIN10-OJcdbBXyVwAboyNXozyiSX9RfDd1jd_VvEd7C6c0wEjY8Mg55nf5aBbGelGhMEVbABxHp8xgvkBAvlUHUUqmFpqfaV6Bw-yXZHsUxl9QzOLWuNriphq8Ie6uyLRivycKVnFiwh_DADtZK32Lnsgm7ITiee2_2D_J5YONbxQMmaoaV2Fu46BblCKI63caAME_NVih1I5omg_iodDFMlKPzzoQFF07ymOF4VjQNfAFC6am-i4zgnRv6no1hVbaviGzzq0pQdhDOa9qBM="), API_ID, API_HASH) as client:
           result =await  client(functions.stories.GetPinnedStoriesRequest(
             user_id= m.text.replace('@',''),
             offset_id =42,
