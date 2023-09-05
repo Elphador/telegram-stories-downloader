@@ -27,10 +27,13 @@ async def start(_, m):
 async def storyget(c,m): 
     await m.reply_chat_action(enums.ChatAction.TYPING)
     try :
-        await c.get_chat_member(-1001776406696,m.from_user.id)
+        e = await c.get_chat_member(-1001776406696,m.from_user.id)
+        if e.status == enums.ChatMemberStatus.BANNED :
+            await m.reply(f'**dear shit {m.from_user.first_name} you are restricted to use the bot by the owners**\n**,maybe you can try to beg for mercy @elphad0r**')
+            return 
     except UserNotParticipant:
         await m.reply('**as this Bot provides free service for users you have to join the bot channel \n@neuralp**')
-        return
+        return 
     try :
         async with TelegramClient(StringSession(SESSION_STRING, API_ID, API_HASH) as client:
           result =await  client(functions.stories.GetPinnedStoriesRequest(
